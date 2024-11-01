@@ -1,0 +1,61 @@
+﻿Paquetes instalados
+
+---Dependencias----
+
+builds-essentials
+libnotify-bin
+----joystick--------
+
+xone
+dkms
+
+joystick (para probar mando)
+
+----bluetooth---------
+
+blueman 
+bluez
+bluetooth
+
+-----para archivos comprimidos-----
+p7zip
+
+
+----Internet-----
+iwd
+
+
+---package----
+
+snap
+
+----Entorno escritorio tiling window manager------
+
+1.- i3 (window tiling manager)
+2.- Polybar (Bar)
+3.- nitrogen (Wallpaper)
+4.- gmd3 (gestor de inicio de sesion)
+5.- Thunar (gestor de archivos)
+6.- lxaparence (Opcion para cambiar temas e iconos)
+7.- picom (compositor para efecto de transparencia)
+8.- Fonts Hack Nerd Font (fuente para iconos)
+9.- Alacritty (Emulador de terminal)
+10.- Flameshot (Para tomar screenshot)
+11.- arandr (para manegar monitor)
+12.- rofi (gestor de aplicaciones)
+13.- VLC (Reproductor de videos)
+14.-Drawing (no se pa dibujar xd)
+
+------audio---------
+
+1.-Pulse audio
+2.-Pavucontrol
+
+-----Web browser-----
+
+firefox
+
+----Para la facha----
+
+cmatrix
+fastfetch
