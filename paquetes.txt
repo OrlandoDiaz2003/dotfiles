@@ -50,7 +50,7 @@ snap
 
 1.-Pulse audio
 2.-Pavucontrol
-
+3- playerctl (muestra la cancion sonando en spotify xd)
 -----Web browser-----
 
 firefox
