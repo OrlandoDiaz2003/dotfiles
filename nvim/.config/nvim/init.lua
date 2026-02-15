@@ -1,25 +1,31 @@
-vim.opt.number = true
+-- OPTIONS
+vim.opt.number         = true
 vim.opt.relativenumber = true
-vim.opt.wrap = false
-vim.opt.expandtab = true
-vim.opt.list = true
-vim.opt.tabstop = 4
-vim.opt.swapfile = false
-vim.opt.shiftwidth = 4
-vim.opt.smartindent = true
-vim.opt.hlsearch = false
-vim.o.listchars = 'tab:→ ,lead:·,trail:·,space:·'
-vim.opt.incsearch = true
-vim.opt.cursorline = false
-vim.opt.showmode = true
-vim.opt.termguicolors = true
-vim.opt.scrolloff = 12
-vim.opt.guicursor = ""
-vim.opt.colorcolumn = "80"
-vim.opt.winborder = "rounded"
-vim.opt.laststatus = 2
-vim.g.mapleader = " "
+vim.opt.wrap           = false
+vim.opt.expandtab      = true
+vim.opt.list           = true
+vim.opt.pumheight      = 10
+vim.opt.virtualedit    = ""
+vim.opt.cmdheight      = 0
+vim.opt.tabstop        = 4
+vim.opt.swapfile       = false
+vim.opt.shiftwidth     = 4
+vim.opt.smartindent    = true
+vim.opt.smartcase      = true
+vim.opt.hlsearch       = false
+vim.o.listchars        = 'tab:→ ,lead:·,trail:·,space:·'
+vim.opt.incsearch      = true
+vim.opt.cursorline     = false
+vim.opt.showmode       = true
+vim.opt.termguicolors  = true
+vim.opt.scrolloff      = 12
+vim.opt.guicursor      = ""
+vim.opt.colorcolumn    = "80"
+vim.opt.winborder      = "none"
+vim.opt.laststatus     = 2
+vim.g.mapleader        = " "
 
+--REMAPS
 vim.keymap.set("n", "<Leader>e", "<cmd>Oil<CR>")
 vim.keymap.set("n", "<Leader>w", "<cmd>write<CR>")
 vim.keymap.set("n", "<Leader>q", ":quit<CR>")
@@ -31,12 +37,13 @@ vim.keymap.set("n", "<C-Down>", "<C-w>+")
 vim.keymap.set("n", "<F9>", ":below Compile<CR>")
 
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], {noremap = true})
-vim.keymap.set("n", "<Leader>t",  ":belowright 15split | term <CR>")
+vim.keymap.set("n", "<Leader>t",  ":vsplit | wincmd l | term<CR>")
 
 vim.keymap.set({ "n", "v", "x" }, "<Leader>y", '"+y <CR>')
 
 vim.keymap.set("n", "<Leader>f", vim.lsp.buf.format)
 
+--Netrw config
 vim.g.netrw_liststyle = 1
 vim.g.netrw_banner = 0
 vim.g.netrw_sizestyle = "H"
@@ -52,10 +59,11 @@ vim.api.nvim_create_autocmd('FileType', {
 
 })
 
+--Plugins
 vim.pack.add({
-	{ src = "https://github.com/blazkowolf/gruber-darker.nvim"},
-	{ src = "https://github.com/loctvl842/monokai-pro.nvim"},
 	{ src = "https://github.com/folke/tokyonight.nvim"},
+	{ src = "https://github.com/joshdick/onedark.vim"},
+	{ src = "https://github.com/oskarnurm/koda.nvim"},
 	{ src = "https://github.com/sphamba/smear-cursor.nvim"},
 	{ src = "https://github.com/stevearc/oil.nvim" },
 	{ src = "https://github.com/nvim-telescope/telescope.nvim" },
@@ -73,23 +81,9 @@ vim.pack.add({
 
 vim.g.compile_mode = {}
 
-require"gruber-darker".setup({
-    bold = false,
-    italic = {
-        strings = false,
-        comments = false,
-        operators = false,
-        folds = false,
-    },
-    undercurl = false,
-    underline = false,
-})
+vim.cmd("color tokyonight-night")
 
-require"tokyonight".setup({
-    transparent = true
-})
-
-vim.cmd("color gruber-darker")
+--Plugin config
 require"smear_cursor".enabled = true
 
 require "oil".setup({
@@ -105,12 +99,18 @@ require "oil".setup({
 
 require("nvim-treesitter.configs").setup({
 	ensure_installed = {
-		'lua'
+		'c',
+		'lua',
+		'html',
+		'css',
+		'python',
+		'javascript',
 	},
 	sync_install = false,
 	auto_install = true,
+
 	highlight = {
-		enable = true,
+		enable =  true,
 		additional_vim_regex_highlighting = false,
 	},
 	indent = {

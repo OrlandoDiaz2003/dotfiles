@@ -22,14 +22,14 @@ parse_git_branch() {
     git symbolic-ref --short HEAD 2>/dev/null
 }
 
-PS1='[\u@\h \W$(b=$(parse_git_branch); if [ -n "$b" ]; then printf ":\[\e[38;2;239;41;41m\]%s\[\e[0m\]" "$b"; fi)]$ '
-
+PS1='[\u@\h \W$(b=$(parse_git_branch); if [ -n "$b" ]; then printf ":\[\e[38;2;32;147;219m\]%s\[\e[0m\]" "$b"; fi)]$ '
 export PATH
 export PATH=$HOME/.local/scripts:$PATH
 export PATH=$HOME/opt/node/bin:$PATH
 export PATH=$HOME/opt/code/bin:$PATH
 export PATH=$HOME/opt/lsp/clangd_21.1.0/bin:$PATH
 export PATH=$HOME/software/gf:$PATH
+export PATH=$HOME/software/lua-5.5.0/src:$PATH
 export MANWIDTH=85
 
 #alias
@@ -59,3 +59,4 @@ if [ -d ~/.bashrc.d ]; then
     done
 fi
 unset rc
+. "$HOME/.cargo/env"
