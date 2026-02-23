@@ -1,29 +1,31 @@
-# Colors (Tokyo Night)
-# Source https//github.com/zatchheems/tokyo-night-alacritty-theme
-
-# Default colors
 [colors.primary]
 background = '#1a1b26'
-foreground = '#a9b1d6'
+foreground = '#c0caf5'
 
-# Normal colors
+[colors.cursor]
+text = '#1a1b26'
+cursor = '#c0caf5'
+
+[colors.selection]
+background = '#283457'
+foreground = '#c0caf5'
+
 [colors.normal]
-black   = '#32344a'
-red     = '#f7768e'
-green   = '#9ece6a'
-yellow  = '#e0af68'
-blue    = '#7aa2f7'
-magenta = '#ad8ee6'
-cyan    = '#449dab'
-white   = '#787c99'
+black   = '#15161e'  # color0
+red     = '#f7768e'  # color1
+green   = '#9ece6a'  # color2
+yellow  = '#e0af68'  # color3
+blue    = '#7aa2f7'  # color4
+magenta = '#bb9af7'  # color5
+cyan    = '#7dcfff'  # color6
+white   = '#a9b1d6'  # color7
 
-# Bright colors
 [colors.bright]
-black   = '#444b6a'
-red     = '#ff7a93'
-green   = '#b9f27c'
-yellow  = '#ff9e64'
-blue    = '#7da6ff'
-magenta = '#bb9af7'
-cyan    = '#0db9d7'
-white   = '#acb0d0'
+black   = '#414868'  # color8
+red     = '#ff899d'  # color9
+green   = '#9fe044'  # color10
+yellow  = '#faba4a'  # color11
+blue    = '#8db0ff'  # color12
+magenta = '#c7a9ff'  # color13
+cyan    = '#a4daff'  # color14
+white   = '#c0caf5'  # color15
