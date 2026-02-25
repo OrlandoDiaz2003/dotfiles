@@ -1,0 +1,25 @@
+[colors.primary]
+background = '#0A1A1A'
+foreground = '#C4E3DC'
+
+# Normal colors
+[colors.normal]
+black   = '#1D3637'
+red     = '#FF7A8F'  # Soft pink-red for a bit of contrast
+green   = '#7EDDC6'  # Vibrant aqua-green like the glowing plants
+yellow  = '#E3F5B8'  # Pale yellow-green like the light particles
+blue    = '#6BCCB5'  # Turquoise like the background foliage
+magenta = '#C49AE5'  # Purple for some variety
+cyan    = '#88E2D3'  # Bright cyan like the foreground plants
+white   = '#D4F0EB'
+
+# Bright colors
+[colors.bright]
+black   = '#4D6E6D'
+red     = '#FF9CAC'  # Brighter pink-red
+green   = '#98F5DE'  # Brighter aqua-green
+yellow  = '#F0FFD0'  # Brighter yellow-green
+blue    = '#8CE2CB'  # Brighter turquoise
+magenta = '#DCB5FF'  # Brighter purple
+cyan    = '#A8FFF0'  # Brighter cyan
+white   = '#E4FFFA'

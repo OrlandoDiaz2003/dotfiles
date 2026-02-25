@@ -14,7 +14,7 @@ vim.o.smartindent    = true
 vim.o.smartcase      = true
 vim.o.hlsearch       = false
 vim.o.listchars      = 'tab:→ ,lead:·,trail:·,space:·'
-vim.o.guifont        = "Cascadia Mono:14"
+vim.o.guifont        = "Hack:16"
 vim.o.incsearch      = true
 vim.o.cursorline     = false
 vim.o.showmode       = true
@@ -23,12 +23,12 @@ vim.o.scrolloff      = 12
 vim.o.guicursor      = ""
 vim.o.colorcolumn    = "80"
 vim.o.winborder      = "none"
-vim.o.laststatus     = 1
-vim.o.lazyredraw     = true
-vim.o.ttimeoutlen    = 10
+vim.o.laststatus     = 3
+vim.o.mousemoveevent = true
 vim.g.mapleader      = " "
 --REMAPS
-vim.keymap.set("n", "<Leader>e", "<cmd>Neotree toggle dir=./ reveal<CR>")
+
+vim.keymap.set("n", "<Leader>pv", ":Ex<CR>")
 vim.keymap.set("n", "<Leader>cd", ":cd %:p:h<CR>:pwd<CR>")
 vim.keymap.set("n", "<Leader>w", "<cmd>write<CR>")
 vim.keymap.set("n", "<Leader>q", ":quit<CR>")
@@ -37,10 +37,18 @@ vim.keymap.set("n", "<C-Right>", "<C-w>>")
 vim.keymap.set("n", "<C-Left>", "<C-w><")
 vim.keymap.set("n", "<C-Up>", "<C-w>-")
 vim.keymap.set("n", "<C-Down>", "<C-w>+")
-vim.keymap.set("n", "<F9>", ":below Compile<CR>")
+
+vim.keymap.set("n", "<F9>", function()
+    vim.ui.input({ prompt = "Compile: " }, function(input)
+        if input then
+            vim.opt.makeprg = input
+            vim.cmd("make | copen")
+        end
+    end)
+end)
 
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], {noremap = true})
-vim.keymap.set("n", "<Leader>t",  ":vsplit | wincmd l | term<CR>")
+vim.keymap.set("n", "<C-t>",  ":vsplit | wincmd l | term<CR>")
 
 vim.keymap.set({ "n", "v", "x" }, "<Leader>y", '"+y <CR>')
 
@@ -48,15 +56,9 @@ vim.keymap.set("n", "<Leader>f", vim.lsp.buf.format)
 --Plugins
 vim.pack.add({
     { src = "https://github.com/folke/tokyonight.nvim"},
-    { src = "https://github.com/rebelot/kanagawa.nvim"},
-    { src = "https://github.com/nvim-neo-tree/neo-tree.nvim"},
-    { src = "https://github.com/romgrk/barbar.nvim"},
+    { src = "https://github.com/EdenEast/nightfox.nvim"},
     { src = "https://github.com/nvim-telescope/telescope.nvim" },
-
-    --Dependencies
-    "https://github.com/MunifTanjim/nui.nvim",
-    "https://github.com/nvim-tree/nvim-web-devicons",
-
+    { src = "https://github.com/nvim-tree/nvim-web-devicons"},
     { src = "https://github.com/windwp/nvim-autopairs" },
     { src = "https://github.com/nvim-lua/plenary.nvim" },
     { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "master", },
@@ -66,40 +68,16 @@ vim.pack.add({
     { src = "https://github.com/mason-org/mason.nvim" },
     { src = "https://github.com/mason-org/mason-lspconfig.nvim" },
     { src = "https://github.com/L3MON4D3/LuaSnip" },
-    { src = "https://github.com/ej-shafran/compile-mode.nvim" ,deps={'plenary'} },
     { src = "https://github.com/windwp/nvim-ts-autotag", build = "make install_jsregexp", },
 })
 
-vim.g.compile_mode = {}
-
-vim.cmd("color kanagawa")
-
-vim.g.barbar_auto_setup = false
-require 'barbar'.setup {
-    auto_hide = true
-}
-local map = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
-
-map('n', '<A-1>', '<Cmd>BufferGoto 1<CR>', opts)
-map('n', '<A-2>', '<Cmd>BufferGoto 2<CR>', opts)
-map('n', '<A-3>', '<Cmd>BufferGoto 3<CR>', opts)
-map('n', '<A-4>', '<Cmd>BufferGoto 4<CR>', opts)
-map('n', '<A-5>', '<Cmd>BufferGoto 5<CR>', opts)
-map('n', '<A-6>', '<Cmd>BufferGoto 6<CR>', opts)
-map('n', '<A-7>', '<Cmd>BufferGoto 7<CR>', opts)
-map('n', '<A-8>', '<Cmd>BufferGoto 8<CR>', opts)
-map('n', '<A-9>', '<Cmd>BufferGoto 9<CR>', opts)
-map('n', '<A-0>', '<Cmd>BufferLast<CR>', opts)
-map('n', '<A-c>', '<Cmd>BufferClose<CR>', opts)
-
+vim.cmd("color terafox")
 
 --Plugin config
 require "nvim-autopairs".setup({
     event = "InsertEnter",
     config = true
 })
-
 
 require("nvim-treesitter.configs").setup({
     ensure_installed = {
@@ -171,8 +149,13 @@ require("blink.cmp").setup({
     fuzzy = { implementation = "lua" }
 })
 
+local virt_txt = false
+vim.keymap.set("n", "<A-e>", function ()
+    virt_txt = not virt_txt
+    vim.diagnostic.config({virtual_text = virt_txt})
+end)
+
 vim.diagnostic.config({
-    virtual_text = false,
     signs = true,
     underline = true,
     update_in_insert = false,

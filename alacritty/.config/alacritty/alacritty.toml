@@ -1,5 +1,5 @@
 [general]
-import = ["/home/orlando/.config/alacritty/themes/kanagawa_wave.toml"]
+import = ["/home/orlando/.config/alacritty/themes/alacritty.toml"]
 
 [env]
 TERM = "xterm-256color"
@@ -8,10 +8,11 @@ TERM = "xterm-256color"
 opacity = 1
 
 [cursor]
-style = {shape = "Block", blinking = "on"}
+style = {shape = "Block", blinking = "always"}
+unfocused_hollow = true
 
 [font]
-size = 14
+size = 20 
 
 [font.normal]
-family = "Cascadia Mono"
+family = "Hack"

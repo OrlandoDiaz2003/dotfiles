@@ -22,7 +22,15 @@ parse_git_branch() {
     git symbolic-ref --short HEAD 2>/dev/null
 }
 
-PS1='[\u@\h \W$(b=$(parse_git_branch); if [ -n "$b" ]; then printf ":\[\e[38;2;32;147;219m\]%s\[\e[0m\]" "$b"; fi)]$ '
+#Original ps1
+#PS1='[\u@\h \W$(b=$(parse_git_branch); if [ -n "$b" ]; then printf ":\[\e[38;2;207;34;46m\]%s\[\e[0m\]" "$b"; fi)]$ '
+
+#Terafox ps1
+PS1='[\[\e[38;2;90;154;150m\]\u@\h \[\e[38;2;138;178;199m\]\W$(b=$(parse_git_branch); if [ -n "$b" ]; then printf ":\[\e[38;2;225;194;136m\]%s" "$b"; fi)\[\e[0m\]]$ '
+
+bind 'set show-all-if-ambiguous on'
+bind 'TAB:menu-complete'
+
 export PATH
 export PATH=$HOME/.local/scripts:$PATH
 export PATH=$HOME/opt/node/bin:$PATH
@@ -36,6 +44,9 @@ export MANWIDTH=85
 alias ls='ls --color=auto'
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
+alias vi='nvim'
+
+alias code='codium'
 
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
