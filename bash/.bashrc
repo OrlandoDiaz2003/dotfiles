@@ -26,7 +26,10 @@ parse_git_branch() {
 #PS1='[\u@\h \W$(b=$(parse_git_branch); if [ -n "$b" ]; then printf ":\[\e[38;2;207;34;46m\]%s\[\e[0m\]" "$b"; fi)]$ '
 
 #Terafox ps1
-PS1='[\[\e[38;2;90;154;150m\]\u@\h \[\e[38;2;138;178;199m\]\W$(b=$(parse_git_branch); if [ -n "$b" ]; then printf ":\[\e[38;2;225;194;136m\]%s" "$b"; fi)\[\e[0m\]]$ '
+#PS1='[\[\e[38;2;90;154;150m\]\u@\h \[\e[38;2;138;178;199m\]\W$(b=$(parse_git_branch); if [ -n "$b" ]; then printf ":\[\e[38;2;225;194;136m\]%s" "$b"; fi)\[\e[0m\]]$ '
+
+#gruvbox-dark
+PS1='[\[\e[38;2;214;153;33m\]\u\[\e[m\]@\[\e[38;2;234;105;98m\]\h \[\e[38;2;125;174;163m\]\W$(b=$(parse_git_branch); if [ -n "$b" ]; then printf ":\[\e[38;2;168;153;132m\]%s" "$b"; fi)\[\e[0m\]]$ '
 
 bind 'set show-all-if-ambiguous on'
 bind 'TAB:menu-complete'
@@ -39,6 +42,9 @@ export PATH=$HOME/opt/lsp/clangd_21.1.0/bin:$PATH
 export PATH=$HOME/software/gf:$PATH
 export PATH=$HOME/software/lua-5.5.0/src:$PATH
 export MANWIDTH=85
+
+export MANPAGER="sh -c 'col -bx | bat -l man -p --theme=gruvbox-dark'"
+export MANROFFOPT="-P-c"
 
 #alias
 alias ls='ls --color=auto'
@@ -53,7 +59,7 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 alias open="xdg-open ."
-alias neofetch="fastfetch --config neofetch"
+alias neofetch="fastfetch --config neofetch --logo Fedora_small"
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=

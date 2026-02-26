@@ -1,5 +1,5 @@
 [general]
-import = ["/home/orlando/.config/alacritty/themes/alacritty.toml"]
+import = ["/home/orlando/.config/alacritty/themes/gruvbox_material_hard_dark.toml"]
 
 [env]
 TERM = "xterm-256color"
@@ -12,7 +12,7 @@ style = {shape = "Block", blinking = "always"}
 unfocused_hollow = true
 
 [font]
-size = 20 
+size = 18 
 
 [font.normal]
-family = "Hack"
+family = "Iosevka"

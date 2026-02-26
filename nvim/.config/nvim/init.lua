@@ -14,7 +14,7 @@ vim.o.smartindent    = true
 vim.o.smartcase      = true
 vim.o.hlsearch       = false
 vim.o.listchars      = 'tab:→ ,lead:·,trail:·,space:·'
-vim.o.guifont        = "Hack:16"
+vim.o.guifont        = "Iosevka:16"
 vim.o.incsearch      = true
 vim.o.cursorline     = false
 vim.o.showmode       = true
@@ -57,6 +57,7 @@ vim.keymap.set("n", "<Leader>f", vim.lsp.buf.format)
 vim.pack.add({
     { src = "https://github.com/folke/tokyonight.nvim"},
     { src = "https://github.com/EdenEast/nightfox.nvim"},
+    { src = "https://github.com/sainnhe/gruvbox-material"},
     { src = "https://github.com/nvim-telescope/telescope.nvim" },
     { src = "https://github.com/nvim-tree/nvim-web-devicons"},
     { src = "https://github.com/windwp/nvim-autopairs" },
@@ -71,7 +72,11 @@ vim.pack.add({
     { src = "https://github.com/windwp/nvim-ts-autotag", build = "make install_jsregexp", },
 })
 
-vim.cmd("color terafox")
+vim.g.gruvbox_material_background = 'hard'
+vim.g.gruvbox_material_foreground = 'mix'
+
+vim.cmd("color gruvbox-material")
+
 
 --Plugin config
 require "nvim-autopairs".setup({
