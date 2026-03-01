@@ -4,11 +4,11 @@ vim.o.relativenumber = true
 vim.o.wrap           = false
 vim.o.expandtab      = true
 vim.o.list           = false
-vim.o.pumheight      = 10
 vim.o.virtualedit    = ""
-vim.o.cmdheight      = 0
+vim.o.cmdheight      = 1
 vim.o.tabstop        = 4
 vim.o.swapfile       = false
+vim.o.backup         = false
 vim.o.shiftwidth     = 4
 vim.o.smartindent    = true
 vim.o.smartcase      = true
@@ -24,6 +24,7 @@ vim.o.guicursor      = ""
 vim.o.colorcolumn    = "80"
 vim.o.winborder      = "none"
 vim.o.laststatus     = 3
+vim.o.numberwidth    = 6
 vim.o.mousemoveevent = true
 vim.g.mapleader      = " "
 --REMAPS
@@ -56,7 +57,7 @@ vim.keymap.set("n", "<Leader>f", vim.lsp.buf.format)
 --Plugins
 vim.pack.add({
     { src = "https://github.com/folke/tokyonight.nvim"},
-    { src = "https://github.com/EdenEast/nightfox.nvim"},
+    { src = "https://github.com/rose-pine/neovim"},
     { src = "https://github.com/sainnhe/gruvbox-material"},
     { src = "https://github.com/nvim-telescope/telescope.nvim" },
     { src = "https://github.com/nvim-tree/nvim-web-devicons"},
@@ -73,10 +74,20 @@ vim.pack.add({
 })
 
 vim.g.gruvbox_material_background = 'hard'
-vim.g.gruvbox_material_foreground = 'mix'
+vim.g.gruvbox_material_foreground = 'original'
+vim.g.gruvbox_material_transparent_background = 1
 
-vim.cmd("color gruvbox-material")
+require"tokyonight".setup({
+    transparent = true
+})
 
+require("rose-pine").setup({
+    styles = {
+        transparency = true
+    }
+})
+
+vim.cmd("color rose-pine")
 
 --Plugin config
 require "nvim-autopairs".setup({
