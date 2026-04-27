@@ -8,6 +8,26 @@
       "rev": "18712d9d292dd362067de74d3b54eb90ce860ba9",
       "src": "https://github.com/Saghen/blink.cmp"
     },
+    "compile-mode.nvim": {
+      "rev": "ce34ad9e69cb6a2d9f71017f4cb090195fb9fc09",
+      "src": "https://github.com/ej-shafran/compile-mode.nvim"
+    },
+    "darcula": {
+      "rev": "92e8f51d82b36fc6cca148eb98dd3e4cfacc92cd",
+      "src": "https://github.com/blueshirts/darcula"
+    },
+    "darcula-dark.nvim": {
+      "rev": "285c1fe3225ef19ef2639a3080551ee9669f263b",
+      "src": "https://github.com/xiantang/darcula-dark.nvim"
+    },
+    "darcula.nvim": {
+      "rev": "2280e453d26acf6fc1fa6fbd720820e5ffdfb96f",
+      "src": "https://github.com/Carcuis/darcula.nvim"
+    },
+    "darcula_dark.nvim": {
+      "rev": "dd80b584f40738b03702924646765b087d70b5ec",
+      "src": "https://github.com/vermdeep/darcula_dark.nvim"
+    },
     "friendly-snippets": {
       "rev": "572f5660cf05f8cd8834e096d7b4c921ba18e175",
       "src": "https://github.com/rafamadriz/friendly-snippets"
@@ -15,6 +35,14 @@
     "gruvbox-material": {
       "rev": "790afe9dd085aa04eccd1da3626c5fa05c620e53",
       "src": "https://github.com/sainnhe/gruvbox-material"
+    },
+    "jellybeans-nvim": {
+      "rev": "d5989265b5256cb296b5772c73e57490e84f69b1",
+      "src": "https://github.com/metalelf0/jellybeans-nvim"
+    },
+    "koda.nvim": {
+      "rev": "4fe384484afc06140cefe046acb881119c284400",
+      "src": "https://github.com/oskarnurm/koda.nvim"
     },
     "mason-lspconfig.nvim": {
       "rev": "4cfe411526a7a99c18281135e8b4765ae6330d15",
@@ -64,6 +92,10 @@
     "tokyonight.nvim": {
       "rev": "5da1b76e64daf4c5d410f06bcb6b9cb640da7dfd",
       "src": "https://github.com/folke/tokyonight.nvim"
+    },
+    "vim-moonfly-colors": {
+      "rev": "4ed07bc0c6083cdd547c63f5c245e02c068b0c45",
+      "src": "https://github.com/bluz71/vim-moonfly-colors"
     }
   }
 }

@@ -3,7 +3,7 @@ vim.o.number         = true
 vim.o.relativenumber = true
 vim.o.wrap           = false
 vim.o.expandtab      = true
-vim.o.list           = false
+vim.o.list           = true
 vim.o.virtualedit    = ""
 vim.o.cmdheight      = 1
 vim.o.tabstop        = 4
@@ -14,7 +14,7 @@ vim.o.smartindent    = true
 vim.o.smartcase      = true
 vim.o.hlsearch       = false
 vim.o.listchars      = 'tab:→ ,lead:·,trail:·,space:·'
-vim.o.guifont        = "Iosevka:16"
+vim.o.guifont        = "Iosevka Extended:18"
 vim.o.incsearch      = true
 vim.o.cursorline     = false
 vim.o.showmode       = true
@@ -39,15 +39,6 @@ vim.keymap.set("n", "<C-Left>", "<C-w><")
 vim.keymap.set("n", "<C-Up>", "<C-w>-")
 vim.keymap.set("n", "<C-Down>", "<C-w>+")
 
-vim.keymap.set("n", "<F9>", function()
-    vim.ui.input({ prompt = "Compile: " }, function(input)
-        if input then
-            vim.opt.makeprg = input
-            vim.cmd("make | copen")
-        end
-    end)
-end)
-
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], {noremap = true})
 vim.keymap.set("n", "<C-t>",  ":vsplit | wincmd l | term<CR>")
 
@@ -57,9 +48,10 @@ vim.keymap.set("n", "<Leader>f", vim.lsp.buf.format)
 --Plugins
 vim.pack.add({
     { src = "https://github.com/folke/tokyonight.nvim"},
-    { src = "https://github.com/rose-pine/neovim"},
     { src = "https://github.com/sainnhe/gruvbox-material"},
+    { src = "https://github.com/bluz71/vim-moonfly-colors"},
     { src = "https://github.com/nvim-telescope/telescope.nvim" },
+    { src = "https://github.com/ej-shafran/compile-mode.nvim"},
     { src = "https://github.com/nvim-tree/nvim-web-devicons"},
     { src = "https://github.com/windwp/nvim-autopairs" },
     { src = "https://github.com/nvim-lua/plenary.nvim" },
@@ -77,22 +69,25 @@ vim.g.gruvbox_material_background = 'hard'
 vim.g.gruvbox_material_foreground = 'original'
 vim.g.gruvbox_material_transparent_background = 1
 
+vim.g.compile_mode = {}
+
 require"tokyonight".setup({
-    transparent = true
+    transparent = false,
+    style = "night",
 })
 
-require("rose-pine").setup({
-    styles = {
-        transparency = true
-    }
-})
+vim.cmd("colorscheme moonfly")
+vim.api.nvim_set_hl(0, "StatusLine", { fg = "#E0E0E0", bg = "#621a83", bold = true })
+vim.api.nvim_set_hl(0, "StatusLineNC", { fg = "#E0E0E0", bg = "#621a83" })
+vim.api.nvim_set_hl(0, "ExtraWhitespace", { bg = "red" })
 
-vim.cmd("color rose-pine")
+-- Aplicar el match
+vim.fn.matchadd("ExtraWhitespace", [[\s\+$]])
 
 --Plugin config
 require "nvim-autopairs".setup({
     event = "InsertEnter",
-    config = true
+    config = true,
 })
 
 require("nvim-treesitter.configs").setup({
