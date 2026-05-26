@@ -4,9 +4,70 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes '(modus-vivendi-deuteranopia))
+ '(custom-enabled-themes '(gruber-darker))
  '(custom-safe-themes
-   '("9e5e0ff3a81344c9b1e6bfc9b3dcf9b96d5ec6a60d8de6d4c762ee9e2121dfb2"
+   '("138ed99a323c1b93c52f4b3726caf2bc634b79a76fa63a3d3aff76394db5f28f"
+     "8325ce8887001cf97589b3460ee88fd3344a290a815ec248945de6d223b7b01f"
+     "0ef0c3e24c8f704430e2b2f473101c08fb8bab93d09a80dbc2ea2dbb799aa861"
+     "10e330880269244ae45ae9e02fe6f55766da9e15036e7c7f07d7ce228195deb5"
+     "57a29645c35ae5ce1660d5987d3da5869b048477a7801ce7ab57bfb25ce12d3e"
+     "efcecf09905ff85a7c80025551c657299a4d18c5fcfedd3b2f2b6287e4edd659"
+     "9e9209fd17023af648e3aaf682255c29beddf5ceb04c3ce7cc883323c2b54901"
+     "615d8f3208b19161ada77e155beaca0678a35abb182ceae87e26660ecbca04d5"
+     "da15a04d9246e909c7bc4237377c0591cc78ed03a762299a68c42cd832d69298"
+     "833ddce3314a4e28411edf3c6efde468f6f2616fc31e17a62587d6a9255f4633"
+     "d89e15a34261019eec9072575d8a924185c27d3da64899905f8548cbd9491a36"
+     "2b0fcc7cc9be4c09ec5c75405260a85e41691abb1ee28d29fcd5521e4fca575b"
+     "830877f4aab227556548dc0a28bf395d0abe0e3a0ab95455731c9ea5ab5fe4e1"
+     "7fea145741b3ca719ae45e6533ad1f49b2a43bf199d9afaee5b6135fd9e6f9b8"
+     "46433a4be67ff0f415175d0876ef9435d190f3aa57bb00670febd70ba0ba52e1"
+     "28f3ac0f5fade64dc7e27abe9d32e7d85576c40940977e8e319f25055d3a28b7"
+     "2493d0ad0bb94bd2ad297a6d76288751a532fd6d8d6af694ac14008caa6b7fa2"
+     "967c23e9ba179b80560774419f081df22e7674aac23c5c550b817e4a1ce7d058"
+     "6dcc66a60dce37a5817d46e7b1f838ac5d95a79061119adeb7c04c7ae9f511d0"
+     "f654d73d7a0761cc4f7d99fffe4b16fce1b2d95844f37bc786e455cec744ac75"
+     "d6f01f50d14993aa68890ca64eda653c505fb68873375ab4c9358e566fc133cd"
+     "5acb2e842cccd8e19e3f263a7e27345b7c12024b80cfad00094c9da54cc0a0ed"
+     "677e3d3d9ca354bfa2422287bc8ef048a759cd5009493e75197d3a3ab3590c58"
+     "749a7bb14efeb8b6c9b251c7a771ab7de500b247eb35f69bfccbdfca27e0602c"
+     "f0ddff48ec78dec9ac9ea3236e7208ef58a86d445207a674523c0eba8e9743b0"
+     "76829ecd2a3810c7a20b4163c8b3dbc8c4faf1674bb568e5150dd8d24fef25bf"
+     "be2cf7aada403c8ce552e29fce64b1cda28db4cdc72c1152a6e8989c8ac69847"
+     "2b9e0d7bceebee7473c100ecbf2c76a65b6e2129c73775f5949e39a677fa621f"
+     "5db7ff8db7fe64558355dba6314cb73008eb7cb1a4ca4552d69fbe588ef4c224"
+     "4515e88dea04cac581b05b1893f461169fad58a1bd1f255605e0e586a354f7bc"
+     "1c725e4aee133f350459e0692f2b885c3444982bf6e8647b05d1cfc519760d9f"
+     "0da9f48243b77c83719c569efd88a7e47c1d8a3f2887838408745d2d52fad8a8"
+     "e684e71b7276a85c0ec8ee8f3ff4bc6b61dbc1694288ad049e062029fc072e54"
+     "01bb579ed8a5b4a77490798626a96ae153288b8c2709e291162cfcc2e0aad647"
+     "6a95b0faf6cee6adfda34cdfadb2fed6f4157a1d49aabef8cc9b94c187d69a1d"
+     "4e6e3a04936e001ca758dce1bfa5b54fb601683a7361c30d754347a75f321d28"
+     "1b2727001d06f63916118b811da49a9344582c16f9e2d7e26657634712886775"
+     "dc8d63cd0514d058bdf34774163709834519350c1a80dc04deaa58085a8810a5"
+     "6aff83667a3bad8db2f55d69cf595f58b56af233f116ec24d93fe2aa51033eef"
+     "03ffccc093c553a238a54fea13f2056749d83c24e65940f8d4bdb7135f1199a5"
+     "f5ab1ad901eb430cdcd9b2a6824e94ff384172a9492ff7a88fe989ee2d583f09"
+     "6965a903ced31bd58caddb7e7035aadc47f8b0a5c57f246b698be2dfdfed2c4e"
+     "51caf9bf88aba940d98c96add138d83317d50eae4b8526612184e93473252d54"
+     "0206a1960f04896d7f5144e2e8ac0119bb63df78deec362337e7cc3003b946e9"
+     "98f2052cba13ccbf7dc91e6ce4dbc02fc9f6421782c11f8403504222f4d423f7"
+     "ed2efc874021b54144b9ed9874e4d9c036090488aeabe19c9ac28576a162ec12"
+     "97e5f82e4e93c3a03fc823673d55cbb7e2c9cc27a6ac419b11c23ef4a2d0de26"
+     "1b74dd5576787105a0efcd6e8fed74755bb3fd234aaa5d500e21ddbd56c2661a"
+     "0f738dce3f831b6d64ee3e98052bdea663b74d5149dcbbf555327dcb4517fc08"
+     "2c7dc80264de0ba9409d4ebb3c7b31cf8e4982015066174c786f16a672db71b2"
+     "516ec39655c85f346393f5d93e0f03602b6bfc33335bf2fd673016c9c4cdc69e"
+     "22faff66975354a3dd145ae13934758d45930ad09cbbe8bd1ed74224e4aa5684"
+     "0a8cf72fd94bfb67dd72dc085538b39ea47aeae8bfc2b8545c0d3c99c339c204"
+     "546f3e8c4cb46043df1f646322c4b57049fc4c31fdf96e41db077c3408660057"
+     "6d58e2b15bdf919fb3f975572af5de59556507b4addf71d8a0d4da3b5af1e830"
+     "cf0e1f8a027d3a38602ce6628399db5550ad7f0598c01979e01ab45b8a631639"
+     "578002ec7093cedeb7d279794492b19ad7413cca3e16286e776168eb544798c4"
+     "cab317d0125d7aab145bc7ee03a1e16804d5abdfa2aa8738198ac30dc5f7b569"
+     "39dd7106e6387e0c45dfce8ed44351078f6acd29a345d8b22e7b8e54ac25bac4"
+     "bec534832002024e80b4cdc8095b65b0c7772778e27be379922c55af399de3fd"
+     "efbcdd1362c2c7ab2eafd2694940377f5bcff80c8b3b1d2e0b064459c29418d4"
+     "9e5e0ff3a81344c9b1e6bfc9b3dcf9b96d5ec6a60d8de6d4c762ee9e2121dfb2"
      "e8ceeba381ba723b59a9abc4961f41583112fc7dc0e886d9fc36fa1dc37b4079"
      "c34b1cd863f5249bfc3b86e0454368f9bb8d97ea0c5b760939933eee56ed4175"
      "2f8af2a3a2fae6b6ea254e7aab6f3a8b5c936428b67869cef647c5f8e7985877"
@@ -40,12 +101,14 @@
      default))
  '(display-line-numbers 'relative)
  '(package-selected-packages
-   '(amaranth-dark-theme cobol-mode company gruber-darker-theme
-                         holyc-mode rust-mode smex zenburn-theme)))
+   '(amaranth-dark-theme cobol-mode company docker-compose-mode
+                         dockerfile-mode dotenv-mode ef-themes go-mode
+                         gruber-darker-theme holyc-mode markdown-mode
+                         rust-mode smex solarized-theme vs-dark-theme
+                         vscode-dark-plus-theme zenburn-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(mode-line ((t (:background "#621a83" :foreground "#E0E0E0" :box nil))))
- '(mode-line-inactive ((t (:background "#621a83" :foreground "#999999" :box nil)))))
+ )

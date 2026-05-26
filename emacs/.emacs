@@ -19,6 +19,7 @@
 (scroll-bar-mode 0)
 (ido-mode 1)
 (ido-everywhere 1)
+(add-to-list 'custom-theme-load-path "~/.emacs.local/")
 
 (require 'whitespace)
 
@@ -40,7 +41,7 @@
 (add-to-list 'load-path "~/.emacs.local/")
 
 (add-to-list 'default-frame-alist
-             '(font . "Iosevka Extended 18"))
+             '(font . "Iosevka 18"))
 
 (use-package company)
 (add-hook 'prog-mode-hook 'company-mode)
@@ -48,10 +49,6 @@
 (use-package gruber-darker-theme
   :config
   (load-theme 'gruber-darker t))
-
-(custom-set-faces
- '(mode-line ((t (:background "#621a83" :foreground "#E0E0E0" :box nil))))
- '(mode-line-inactive ((t (:background "#621a83" :foreground "#999999" :box nil)))))
 
 (use-package rust-mode)
 (require 'holyc-mode)

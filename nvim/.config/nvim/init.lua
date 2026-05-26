@@ -3,7 +3,7 @@ vim.o.number         = true
 vim.o.relativenumber = true
 vim.o.wrap           = false
 vim.o.expandtab      = true
-vim.o.list           = true
+vim.o.list           = false
 vim.o.virtualedit    = ""
 vim.o.cmdheight      = 1
 vim.o.tabstop        = 4
@@ -14,7 +14,7 @@ vim.o.smartindent    = true
 vim.o.smartcase      = true
 vim.o.hlsearch       = false
 vim.o.listchars      = 'tab:→ ,lead:·,trail:·,space:·'
-vim.o.guifont        = "Iosevka Extended:18"
+vim.o.guifont        = "Liberation Mono:18"
 vim.o.incsearch      = true
 vim.o.cursorline     = false
 vim.o.showmode       = true
@@ -23,10 +23,23 @@ vim.o.scrolloff      = 12
 vim.o.guicursor      = ""
 vim.o.colorcolumn    = "80"
 vim.o.winborder      = "none"
-vim.o.laststatus     = 3
-vim.o.numberwidth    = 6
+vim.o.laststatus     = 1
+vim.o.numberwidth    = 1
 vim.o.mousemoveevent = true
+vim.o.re             = 0
 vim.g.mapleader      = " "
+
+vim.opt.fillchars = {
+  vert = '|',
+  horiz = ' ',
+}
+
+vim.cmd [[
+ syntax on
+ syntax enable
+ set t_Co=256
+]]
+
 --REMAPS
 
 vim.keymap.set("n", "<Leader>pv", ":Ex<CR>")
@@ -39,20 +52,21 @@ vim.keymap.set("n", "<C-Left>", "<C-w><")
 vim.keymap.set("n", "<C-Up>", "<C-w>-")
 vim.keymap.set("n", "<C-Down>", "<C-w>+")
 
-vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], {noremap = true})
-vim.keymap.set("n", "<C-t>",  ":vsplit | wincmd l | term<CR>")
+vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { noremap = true })
+vim.keymap.set("n", "<C-t>", ":vsplit | wincmd l | term<CR>")
 
 vim.keymap.set({ "n", "v", "x" }, "<Leader>y", '"+y <CR>')
 
 vim.keymap.set("n", "<Leader>f", vim.lsp.buf.format)
 --Plugins
 vim.pack.add({
-    { src = "https://github.com/folke/tokyonight.nvim"},
-    { src = "https://github.com/sainnhe/gruvbox-material"},
-    { src = "https://github.com/bluz71/vim-moonfly-colors"},
+    { src = "https://github.com/folke/tokyonight.nvim" },
+    { src = "https://github.com/sainnhe/gruvbox-material" },
+    { src = "https://github.com/miikanissi/modus-themes.nvim" },
+    { src = "https://github.com/blazkowolf/gruber-darker.nvim" },
     { src = "https://github.com/nvim-telescope/telescope.nvim" },
-    { src = "https://github.com/ej-shafran/compile-mode.nvim"},
-    { src = "https://github.com/nvim-tree/nvim-web-devicons"},
+    { src = "https://github.com/ej-shafran/compile-mode.nvim" },
+    { src = "https://github.com/nvim-tree/nvim-web-devicons" },
     { src = "https://github.com/windwp/nvim-autopairs" },
     { src = "https://github.com/nvim-lua/plenary.nvim" },
     { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "master", },
@@ -62,24 +76,33 @@ vim.pack.add({
     { src = "https://github.com/mason-org/mason.nvim" },
     { src = "https://github.com/mason-org/mason-lspconfig.nvim" },
     { src = "https://github.com/L3MON4D3/LuaSnip" },
-    { src = "https://github.com/windwp/nvim-ts-autotag", build = "make install_jsregexp", },
+    { src = "https://github.com/windwp/nvim-ts-autotag",          build = "make install_jsregexp", },
 })
 
 vim.g.gruvbox_material_background = 'hard'
-vim.g.gruvbox_material_foreground = 'original'
+vim.g.gruvbox_material_foreground = 'mixed'
 vim.g.gruvbox_material_transparent_background = 1
 
 vim.g.compile_mode = {}
 
-require"tokyonight".setup({
-    transparent = false,
+require "tokyonight".setup({
+    transparent = true,
     style = "night",
 })
 
-vim.cmd("colorscheme moonfly")
-vim.api.nvim_set_hl(0, "StatusLine", { fg = "#E0E0E0", bg = "#621a83", bold = true })
-vim.api.nvim_set_hl(0, "StatusLineNC", { fg = "#E0E0E0", bg = "#621a83" })
-vim.api.nvim_set_hl(0, "ExtraWhitespace", { bg = "red" })
+require "gruber-darker".setup({
+    bold = false,
+    italic = {
+        strings = false,
+        comments = false,
+        operators = false,
+        folds = false
+    },
+    underline = false,
+    undercurle = false
+})
+
+vim.cmd("colorscheme Amaranth")
 
 -- Aplicar el match
 vim.fn.matchadd("ExtraWhitespace", [[\s\+$]])
@@ -103,8 +126,8 @@ require("nvim-treesitter.configs").setup({
     auto_install = true,
 
     highlight = {
-        enable =  true,
-        additional_vim_regex_highlighting = false,
+        enable = false,
+        additional_vim_regex_highlighting = true,
     },
     indent = {
         enable = true,
@@ -131,11 +154,28 @@ vim.api.nvim_create_autocmd('PackChanged', {
     end,
 })
 
+vim.api.nvim_create_autocmd({"BufEnter", "BufReadPost"}, {
+    callback = function()
+        pcall(vim.treesitter.stop)
+    end,
+})
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+        if client ~= nil then
+            client.server_capabilities.semanticTokensProvider = nil
+        end
+  end,
+})
+
+vim.treesitter.highlighter.active = {}
+vim.g.loaded_treesitter = 1
+
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader><space>', builtin.find_files, { desc = 'Telescope find files' })
-vim.keymap.set('n', '<leader>fg',      builtin.live_grep , { desc = 'Telescope live grep' })
-vim.keymap.set('n', '<leader>fb',      builtin.buffers   , { desc = 'Telescope buffers' })
-vim.keymap.set('n', '<leader>fh',      builtin.help_tags , { desc = 'Telescope help tags' })
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
+vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
 
 require("mason").setup()
 require("mason-lspconfig").setup {
@@ -147,7 +187,7 @@ local capabilities = require('blink.cmp').get_lsp_capabilities()
 local servers = { "clangd", "pyright", "bashls", "html", "emmet_ls", "ts_ls", "eslint" }
 
 for _, server in ipairs(servers) do
-    vim.lsp.config(server,{ capabilities = capabilities })
+    vim.lsp.config(server, { capabilities = capabilities })
 end
 
 require("blink.cmp").setup({
@@ -161,9 +201,9 @@ require("blink.cmp").setup({
 })
 
 local virt_txt = false
-vim.keymap.set("n", "<A-e>", function ()
+vim.keymap.set("n", "<A-e>", function()
     virt_txt = not virt_txt
-    vim.diagnostic.config({virtual_text = virt_txt})
+    vim.diagnostic.config({ virtual_text = virt_txt })
 end)
 
 vim.diagnostic.config({
@@ -185,7 +225,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 vim.api.nvim_create_autocmd('LspAttach', {
     desc = 'LSP actions',
     callback = function(event)
-        local opts = {buffer = event.buf}
+        local opts = { buffer = event.buf }
         vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
         vim.keymap.set('n', '<leader>k', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
         vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
