@@ -23,22 +23,15 @@ vim.o.scrolloff      = 12
 vim.o.guicursor      = ""
 vim.o.colorcolumn    = "80"
 vim.o.winborder      = "none"
-vim.o.laststatus     = 1
+vim.o.laststatus     = 2
 vim.o.numberwidth    = 1
 vim.o.mousemoveevent = true
-vim.o.re             = 0
 vim.g.mapleader      = " "
 
 vim.opt.fillchars = {
   vert = '|',
   horiz = ' ',
 }
-
-vim.cmd [[
- syntax on
- syntax enable
- set t_Co=256
-]]
 
 --REMAPS
 
@@ -60,10 +53,7 @@ vim.keymap.set({ "n", "v", "x" }, "<Leader>y", '"+y <CR>')
 vim.keymap.set("n", "<Leader>f", vim.lsp.buf.format)
 --Plugins
 vim.pack.add({
-    { src = "https://github.com/folke/tokyonight.nvim" },
-    { src = "https://github.com/sainnhe/gruvbox-material" },
-    { src = "https://github.com/miikanissi/modus-themes.nvim" },
-    { src = "https://github.com/blazkowolf/gruber-darker.nvim" },
+    { src = "https://github.com/ellisonleao/gruvbox.nvim" },
     { src = "https://github.com/nvim-telescope/telescope.nvim" },
     { src = "https://github.com/ej-shafran/compile-mode.nvim" },
     { src = "https://github.com/nvim-tree/nvim-web-devicons" },
@@ -79,31 +69,17 @@ vim.pack.add({
     { src = "https://github.com/windwp/nvim-ts-autotag",          build = "make install_jsregexp", },
 })
 
-vim.g.gruvbox_material_background = 'hard'
-vim.g.gruvbox_material_foreground = 'mixed'
-vim.g.gruvbox_material_transparent_background = 1
-
 vim.g.compile_mode = {}
 
-require "tokyonight".setup({
-    transparent = true,
-    style = "night",
+require "gruvbox".setup({
+    transparent_mode = false,
+    contrast = "dark",
 })
 
-require "gruber-darker".setup({
-    bold = false,
-    italic = {
-        strings = false,
-        comments = false,
-        operators = false,
-        folds = false
-    },
-    underline = false,
-    undercurle = false
-})
+vim.g.zenburn_high_Contrast = 1
+vim.g.zenburn_old_Visual = 1
 
-vim.cmd("colorscheme Amaranth")
-
+vim.cmd("colo gruvbox")
 -- Aplicar el match
 vim.fn.matchadd("ExtraWhitespace", [[\s\+$]])
 
@@ -126,8 +102,8 @@ require("nvim-treesitter.configs").setup({
     auto_install = true,
 
     highlight = {
-        enable = false,
-        additional_vim_regex_highlighting = true,
+        enable = true,
+        additional_vim_regex_highlighting = false,
     },
     indent = {
         enable = true,
@@ -153,23 +129,6 @@ vim.api.nvim_create_autocmd('PackChanged', {
         end
     end,
 })
-
-vim.api.nvim_create_autocmd({"BufEnter", "BufReadPost"}, {
-    callback = function()
-        pcall(vim.treesitter.stop)
-    end,
-})
-vim.api.nvim_create_autocmd("LspAttach", {
-  callback = function(args)
-    local client = vim.lsp.get_client_by_id(args.data.client_id)
-        if client ~= nil then
-            client.server_capabilities.semanticTokensProvider = nil
-        end
-  end,
-})
-
-vim.treesitter.highlighter.active = {}
-vim.g.loaded_treesitter = 1
 
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader><space>', builtin.find_files, { desc = 'Telescope find files' })

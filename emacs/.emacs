@@ -19,7 +19,6 @@
 (scroll-bar-mode 0)
 (ido-mode 1)
 (ido-everywhere 1)
-(add-to-list 'custom-theme-load-path "~/.emacs.local/")
 
 (require 'whitespace)
 
@@ -41,7 +40,7 @@
 (add-to-list 'load-path "~/.emacs.local/")
 
 (add-to-list 'default-frame-alist
-             '(font . "Iosevka 18"))
+             '(font . "Roboto Mono Medium 16"))
 
 (use-package company)
 (add-hook 'prog-mode-hook 'company-mode)

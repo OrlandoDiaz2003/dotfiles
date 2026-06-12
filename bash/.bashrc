@@ -24,20 +24,7 @@ parse_git_branch() {
 
 
 #Original ps1
-#PS1='[\u@\h \W$(b=$(parse_git_branch); if [ -n "$b" ]; then printf ":\[\e[38;2;207;34;46m\]%s\[\e[0m\]" "$b"; fi)]$ '
-
-WHITE="\[\e[38;2;255;255;255m\]"
-GREY_DARK="\[\e[38;2;80;88;93m\]"
-PURPLE="\[\e[38;2;155;89;182m\]"
-RESET="\[\e[0m\]"
-
-PS1="\A ${WHITE}\W${RESET}\$(b=\$(parse_git_branch); if [ -n \"\$b\" ]; then printf \" ${GREY_DARK}Git:${RESET}${GREY_DARK}(${PURPLE}%s${GREY_DARK})${RESET}\" \"\$b\"; fi) > "
-
-#Terafox ps1
-#PS1='[\[\e[38;2;90;154;150m\]\u@\h \[\e[38;2;138;178;199m\]\W$(b=$(parse_git_branch); if [ -n "$b" ]; then printf ":\[\e[38;2;225;194;136m\]%s" "$b"; fi)\[\e[0m\]]$ '
-
-#gruvbox-dark
-#PS1='[\[\e[38;2;214;153;33m\]\u\[\e[m\]@\[\e[38;2;234;105;98m\]\h \[\e[38;2;125;174;163m\]\W$(b=$(parse_git_branch); if [ -n "$b" ]; then printf ":\[\e[38;2;168;153;132m\]%s" "$b"; fi)\[\e[0m\]]$ '
+PS1='[\u@\h \W$(b=$(parse_git_branch); if [ -n "$b" ]; then printf ":%s" "$b"; fi)]$ '
 
 bind 'set show-all-if-ambiguous on'
 bind 'TAB:menu-complete'
@@ -49,9 +36,13 @@ export PATH=$HOME/opt/code/bin:$PATH
 export PATH=$HOME/opt/lsp/clangd_21.1.0/bin:$PATH
 export PATH=$HOME/software/gf:$PATH
 export PATH=$HOME/software/lua-5.5.0/src:$PATH
-export MANWIDTH=85
+export PATH=$HOME/opt/gnucobol/bin:$PATH
+export PATH=$HOME/opt/lazygit:$PATH
 
-export MANPAGER="sh -c 'col -bx | bat -l man -p --theme=base16-256'"
+export MANWIDTH=85
+export LESS="-X"
+
+export MANPAGER="sh -c 'col -bx | bat -l man -p --theme=gruvbox-dark'"
 export MANROFFOPT="-P-c"
 
 #alias
@@ -59,6 +50,7 @@ alias ls='ls --color=auto'
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
 alias vi='nvim'
+alias vim='nvim'
 
 alias code='codium'
 
@@ -66,10 +58,12 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-alias open="xdg-open ."
-alias neofetch="fastfetch --config neofetch --logo Fedora_small"
+alias rm='rm -I'
+alias cp='cp -v'
+alias mv='mv -v'
 
-alias tetris='./programming/orlando/tt/tt'
+alias open="xdg-open ."
+alias neofetch="fastfetch --config neofetch"
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
@@ -87,3 +81,6 @@ if [ -d ~/.bashrc.d ]; then
 fi
 unset rc
 . "$HOME/.cargo/env"
+
+stty -ixon
+
