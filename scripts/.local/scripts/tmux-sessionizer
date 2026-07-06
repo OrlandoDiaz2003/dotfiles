@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-	selected=$(find ~/code ~/Documentos ~/Descargas -type d | fzf )
+	selected=$(find ~/programming -type d | fzf )
 fi
 
 if [[ -z $selected ]]; then

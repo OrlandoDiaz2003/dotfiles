@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+M2_REPO="$HOME/.m2/repository"
+LOMBOK_DIR="$M2_REPO/org/projectlombok/lombok"
+BASE_WORKSPACE="/home/orlando/.cache/jdtls-workspace"
+
+CURRENT_DIR_NAME=$(basename "$PWD")
+PROJECT_WORKSPACE="$BASE_WORKSPACE/$CURRENT_DIR_NAME"
+
+rm -rf "$PROJECT_WORKSPACE"
+mkdir -p "$PROJECT_WORKSPACE"
+
+LOMBOK_JAR=""
+if [ -f "pom.xml" ]; then
+    VERSION=$(mvn dependency:list 2>/dev/null | grep lombok | head -n 1 | cut -d: -f4)
+    if [ ! -z "$VERSION" ] && [ -f "$LOMBOK_DIR/$VERSION/lombok-$VERSION.jar" ]; then
+        LOMBOK_JAR="$LOMBOK_DIR/$VERSION/lombok-$VERSION.jar"
+    fi
+fi
+
+if [ -z "$LOMBOK_JAR" ]; then
+    LOMBOK_JAR=$(find "$LOMBOK_DIR" -name "lombok-*.jar" ! -name "*sources*" | sort -V | tail -n 1)
+fi
+
+if [ ! -z "$LOMBOK_JAR" ]; then
+    export JDK_JAVA_OPTIONS="$JDK_JAVA_OPTIONS -javaagent:$LOMBOK_JAR"
+fi
+
+ARGS=()
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -data)
+            shift
+            shift
+            ;;
+        *)
+            ARGS+=("$1")
+            shift
+            ;;
+    esac
+done
+
+exec /home/orlando/opt/lsp/jdt-language-server-latest/bin/jdtls -data "$PROJECT_WORKSPACE" -clean "${ARGS[@]}"

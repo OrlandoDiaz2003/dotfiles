@@ -22,9 +22,8 @@ parse_git_branch() {
     git symbolic-ref --short HEAD 2>/dev/null
 }
 
-
-#Original ps1
-PS1='[\u@\h \W$(b=$(parse_git_branch); if [ -n "$b" ]; then printf ":%s" "$b"; fi)]$ '
+#PS1='\e[32m[\u@\h \w$(b=$(parse_git_branch); if [ -n "$b" ] \e[0m; then printf ":%s" "$b"; fi)]$ '
+PS1='\[\033[1;32m\][\u@\h:\w]\$\[\033[0m\] '
 
 bind 'set show-all-if-ambiguous on'
 bind 'TAB:menu-complete'
@@ -38,12 +37,25 @@ export PATH=$HOME/software/gf:$PATH
 export PATH=$HOME/software/lua-5.5.0/src:$PATH
 export PATH=$HOME/opt/gnucobol/bin:$PATH
 export PATH=$HOME/opt/lazygit:$PATH
+export PATH=$HOME/opt/lsp/jdt-language-server-latest/bin:$PATH
 
 export MANWIDTH=85
 export LESS="-X"
 
-export MANPAGER="sh -c 'col -bx | bat -l man -p --theme=gruvbox-dark'"
+# export MANPAGER="sh -c 'col -bx | bat -l man -p --theme=gruvbox-dark'"
 export MANROFFOPT="-P-c"
+
+# Colores estilo Gruvbox para `man` y `less`
+export LESS_TERMCAP_mb=$'\e[1;31m'      # Inicio de parpadeo (Blink) -> Rojo Gruvbox
+export LESS_TERMCAP_md=$'\e[1;36m'      # Inicio de negrita (Títulos/Comandos) -> Azul/Cian Gruvbox
+export LESS_TERMCAP_me=$'\e[0m'         # Fin de modo (Reset)
+export LESS_TERMCAP_se=$'\e[0m'         # Fin de modo Standout
+export LESS_TERMCAP_so=$'\e[1;40;33m'   # Modo Standout (Barra de búsqueda/info) -> Fondo oscuro, texto Amarillo Gruvbox
+export LESS_TERMCAP_ue=$'\e[0m'         # Fin de subrayado
+export LESS_TERMCAP_us=$'\e[1;32m'      # Inicio de subrayado (Variables/Argumentos) -> Verde Gruvbox
+export LESS_TERMCAP_mr=$'\e[7m'         # Modo inverso
+export LESS_TERMCAP_mh=$'\e[2m'         # Modo tenue (Dim)
+export MANPAGER='less'
 
 #alias
 alias ls='ls --color=auto'
@@ -53,6 +65,7 @@ alias vi='nvim'
 alias vim='nvim'
 
 alias code='codium'
+alias slop='agy'
 
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
@@ -84,3 +97,10 @@ unset rc
 
 stty -ixon
 
+
+# opencode
+export PATH=/home/orlando/.opencode/bin:$PATH
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/orlando/.local/bin:$PATH"
